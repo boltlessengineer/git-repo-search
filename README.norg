@@ -1,0 +1,9 @@
+* Git Repo Search
+
+Searches for top 5 git repositories from given name and list them
+
+Use this tool with `fzf`
+
+@code
+./target/debug/git-repo-search "$@" | fzf | awk '{print $NF}' | xargs git clone
+@end
