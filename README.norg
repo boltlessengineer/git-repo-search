@@ -4,6 +4,16 @@ Searches for top 5 git repositories from given name and list them
 
 Use this tool with `fzf`
 
+*`~/.gitconfig`*
 @code
-./target/debug/git-repo-search "$@" | fzf | awk '{print $NF}' | xargs git clone
+[alias]
+    find = !sh -c 'git-repo-search \"$@\" | fzf | awk \"{print \\$NF}\"' --
+@end
+
+@code sh
+git find tokio | xargs git clone
+
+# or
+
+git clone $(git find tokio)
 @end
